@@ -1,0 +1,15 @@
+{
+  "name": "simple-masks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:midia-simples/simple-masks.git",
+  "author": "Gustavo Bonfim <gustavo.hbonfim@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": ["mask", "phone", "simple"],
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}

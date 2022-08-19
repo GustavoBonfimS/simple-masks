@@ -1,23 +1,15 @@
-const BaseMask = require('./Base');
+import BaseMask from "./Base";
 
 function getDefaultTranslation() {
     return {
-        '9': function (val) {
-            return val.replace(/[^0-9]+/g, '')
-        },
-        A: function (val) {
-            return val.replace(/[^a-zA-Z]+/g, '')
-        },
-        S: function (val) {
-            return val.replace(/[^a-zA-Z0-9]+/g, '')
-        },
-        '*': function (val) {
-            return val
-        }
+        '9': (val: string) => val.replace(/[^0-9]+/g, ''),
+        A: (val: string) => val.replace(/[^a-zA-Z]+/g, ''),
+        S: (val: string) => val.replace(/[^a-zA-Z0-9]+/g, ''),
+        '*': (val: string) => val,
     }
 }
 
-function toPattern(value, mask, translation) {
+function toPattern(value: string, mask: string, translation: any) {
     let result = ''
 
     let maskCharIndex = 0
@@ -90,7 +82,7 @@ class CustomMask extends BaseMask {
         return 'default'
     }
 
-    getValue(value, settings) {
+    getValue(value: string, settings: any) {
         if (value === '') {
             return value
         }
@@ -104,21 +96,6 @@ class CustomMask extends BaseMask {
         return masked
     }
 
-    getRawValue(maskedValue, settings) {
-        if (!!settings && settings.getRawValue) {
-            return settings.getRawValue(maskedValue, settings)
-        }
-
-        return maskedValue
-    }
-
-    validate(value, settings) {
-        if (!!settings && settings.validator) {
-            return settings.validator(value, settings)
-        }
-
-        return true
-    }
 }
 
-module.exports = CustomMask;
+export default CustomMask;
